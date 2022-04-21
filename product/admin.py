@@ -1,5 +1,7 @@
 from django.contrib import admin
-from product import models
+from .models import Product
 
 
-admin.site.register(models.Product)
+@admin.register(Product)
+class ProductModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'brand', 'description', 'price', 'clothes_type', 'posted_by', 'contact_number']

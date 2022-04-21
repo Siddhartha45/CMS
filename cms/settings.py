@@ -130,7 +130,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Defining custom authentication 
+# Defining custom authentication -- CustomUser model is used as default user in the system 
 AUTH_USER_MODEL = 'users.CustomUser'
 
 #adding jwt authentication
@@ -154,3 +154,7 @@ MEDIA_URL = '/media/'
   
 # Path where media is stored  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  
+
+LOGIN_REDIRECT_URL = '/'    #redirects users to homepage after successful login
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'    #for password reset

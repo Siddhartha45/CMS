@@ -1,5 +1,7 @@
 from django.contrib import admin
-from users import models
+from .models import CustomUser
 
 
-admin.site.register(models.CustomUser)
+@admin.register(CustomUser)
+class CustomUserModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'email', 'gender', 'phone', 'address']

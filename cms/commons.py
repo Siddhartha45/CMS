@@ -1,4 +1,4 @@
-#choices for selecting genders
+#choices for selecting genders and clothes type
 MALE = 'MALE'
 FEMALE = 'FEMALE'
 
@@ -16,4 +16,10 @@ SIZES = (
     (SMALL, 'S'),
     (MEDIUM, 'M'),
     (LARGE, 'L'),
+)
+
+#choices for selecting clothes type
+CLOTHES_TYPES = (
+    ('MW', 'Male Wear'),
+    ('FW', 'Female Wear'),
 )
