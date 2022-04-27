@@ -22,39 +22,22 @@
     <title> {% block title %} {% endblock title %} </title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar bg-danger navbar-expand-lg navbar--light">
      <div class="container">
-       <a class="navbar-brand" href="/">ShoppingX</a>
+       <a class="navbar-brand text-white" href="/">Threads Nepal</a>
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
            <li class="nav-item">
-             <a class="nav-link active" aria-current="page" href="/">Home</a>
-           </li>
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               Electronics
-             </a>
-             <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
-               <li><a class="dropdown-item" href="{% url 'mobile' %}">Mobile</a></li>
-               <li><a class="dropdown-item" href="#">Laptop</a></li>
-             </ul>
-           </li>
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-white" href="#" id="fashionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               Fashion
-             </a>
-             <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
-               <li><a class="dropdown-item" href="#">Top Wear</a></li>
-               <li><a class="dropdown-item" href="#">Bottom Wear</a></li>
-             </ul>
+             <a class="nav-link text-white" aria-current="page" href="/">Home</a>
            </li>
          </ul>
-         <form class="d-flex">
-           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-           <button class="btn btn-warning" type="submit">S</button>
+         <form class="d-flex" method=POST action="{% url 'search' %}">
+           {% csrf_token %}
+           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+           <button class="btn btn-outline-primary text-white" type="submit">Search</button>
          </form>
          <div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -64,17 +47,12 @@
                 {{request.user.name|capfirst}}
               </a>
               <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
                 <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
               </ul>
             </li>
             <li class="nav-item mx-2">
-             <a href="{% url 'add-to-cart' %}" class="nav-link text-white"><span class="badge bg-danger">4</span> Cart </a>
-            </li>
-            <li class="nav-item mx-2">
-              <a href="{% url 'add-post' %}" class="nav-link text-white"> Add post </a>
+              <a href="{% url 'add-post' %}" class="nav-link text-white">Add post</a>
              </li>
           {% else %}
             <li class="nav-item mx-2">
@@ -94,9 +72,8 @@
     {% block main-content %} {% endblock main-content %}
 
     <!-- Start Footer -->
-    <footer class="container-fluid bg-dark text-center p-2 mt-5">
-        <small class="text-white">Copyright &copy; 2021 || Designed By GeekyShows || </small>
-        <img src="{% static 'app/images/payment.png' %}" alt="" srcset="" class="img-fluid" height="2px">
+    <footer class="container-fluid bg-danger text-center p-2 mt-5">
+        <small class="text-white">Copyright &copy; 2021 || Siddhartha Thapa || </small>
     </footer> <!-- End Footer -->
 
     <!-- Jquery -->

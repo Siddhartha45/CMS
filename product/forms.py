@@ -7,7 +7,7 @@ class AddPostForm(forms.ModelForm):
     
     class Meta:
         model = Product
-        fields = ['name', 'brand', 'description', 'price', 'photo', 'size', 'clothes_type', 'posted_by', 'contact_number']
+        fields = ['name', 'brand', 'description', 'price', 'photo', 'size', 'clothes_type']
         widgets = {'name':forms.TextInput(attrs={'class':'form-control'}),
                     'brand':forms.TextInput(attrs={'class':'form-control'}),
                     #'description':forms.TextInput(attrs={'class':'form-control'}),
@@ -15,6 +15,5 @@ class AddPostForm(forms.ModelForm):
                     'photo':forms.FileInput(attrs={'class':'form-control'}),
                     'size':forms.Select(attrs={'class':'form-control'}),
                     'clothes_type':forms.Select(attrs={'class':'form-control'}),
-                    'posted_by':forms.Select(attrs={'class':'form-control'}),
-                    'contact_number':forms.TextInput(attrs={'class':'form-control'})
+                    #'contact_number':forms.TextInput(attrs={'class':'form-control'})
                   }
