@@ -6,40 +6,63 @@ from rest_framework.permissions import IsAuthenticated
 from django.views import View
 from .forms import AddPostForm
 from django.contrib import messages
+<<<<<<< HEAD
 from django.views.generic.edit import DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+=======
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    """handles adding products"""
+
+    serializer_class = serializers.ProductSerializer
+    queryset = Product.objects.all()
+    permission_classes = (IsAuthenticated,)
+>>>>>>> refs/remotes/origin/master
 
 
 class ProductView(View):
     """To show the products in homepage"""
+
     def get(self, request):
-        name = Product.objects.filter() #filtering objects by name to show products to users
-        malewear = Product.objects.filter(clothes_type='MW')
-        femalewear = Product.objects.filter(clothes_type='FW')
-        
-        context = {'name': name, 'malewear': malewear, 'femalewear': femalewear}
-        return render(request, 'app/home.html', context)
+        name = (
+            Product.objects.filter()
+        )  # filtering objects by name to show products to users
+        malewear = Product.objects.filter(clothes_type="MW")
+        femalewear = Product.objects.filter(clothes_type="FW")
+
+        context = {"name": name, "malewear": malewear, "femalewear": femalewear}
+        return render(request, "app/home.html", context)
 
 
 class ProductDetailView(View):
     """To display the details of the product"""
+
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
         name = Product.objects.filter()
 
-        context = {'product': product, 'name':name}
-        return render(request, 'app/productdetail.html', context)
+        context = {"product": product, "name": name}
+        return render(request, "app/productdetail.html", context)
 
 
 @method_decorator(login_required, name='dispatch')
 class AddPostFormView(View):
     """Allows users to add new post"""
+<<<<<<< HEAD
     
     def get(self, request):
         form = AddPostForm()
         context = {'form': form}
         return render(request, 'app/addpost.html', context)
+=======
+
+    def get(self, request):
+        form = AddPostForm()
+        context = {"form": form}
+        return render(request, "app/addpost.html", context)
+>>>>>>> refs/remotes/origin/master
 
     def post(self, request):
         form = AddPostForm(request.POST, request.FILES)
@@ -48,6 +71,7 @@ class AddPostFormView(View):
             updated_form = form.save(commit=False)
             # fetching user from request and assigning it to posted_by field
             updated_form.posted_by = request.user
+<<<<<<< HEAD
             updated_form.contact_number = request.user.phone
             messages.success(request, 'product has been posted!')
             # saving new valid form
@@ -89,3 +113,10 @@ def searchproduct(request):
 
 
 
+=======
+            # saving new valid form
+            updated_form.save()
+            messages.success(request, "product has been posted!")
+        context = {"form": form}
+        return render(request, "app/addpost.html", context)
+>>>>>>> refs/remotes/origin/master
