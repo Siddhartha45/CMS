@@ -168,3 +168,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 LOGIN_REDIRECT_URL = '/'    #redirects users to homepage after successful login
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'    #for password reset
+
+#mail settings
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '7dd71784d8e516'
+EMAIL_HOST_PASSWORD = '599846a6e97e8b'
+EMAIL_PORT = '2525' 
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
